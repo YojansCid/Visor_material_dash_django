@@ -1,0 +1,736 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+{% block stylesheets %}
+    <style>
+      .custom-label-green {
+          background-color: rgb(254, 203, 13); /* Verde */
+          color: white;
+          padding: 10px;
+          border-radius: 5px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+
+      .custom-label-blue {
+          background-color: #2196F3; /* Azul */
+          color: white;
+          padding: 10px;
+          border-radius: 5px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+
+      .label-value {
+          font-size: 1.2em;
+          display: flex;
+          align-items: center;
+      }
+
+      .label-value i {
+          margin-left: 5px;
+      }
+
+      .custom-label-green, .custom-label-blue {
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    margin-top: 10px;
+    }
+
+    .custom-label-green .label-title, .custom-label-blue .label-title {
+        font-size: 1em;
+        font-weight: bold;
+        
+    }
+
+    .custom-label-green .label-value, .custom-label-blue .label-value {
+        font-size: 2.5em;
+        font-weight: bold;
+    }
+
+    .custom-label-green .label-percentage, .custom-label-blue .label-percentage {
+        font-size: 1.5em;
+        display: flex;
+        align-items: center;
+        margin-top: 5px;
+    }
+
+    .custom-label-green .label-percentage i, .custom-label-blue .label-percentage i {
+        margin-right: 5px;
+    }
+
+    .custom-label-green {
+        background-color: rgb(254, 203, 13); /* Verde */
+    }
+
+    .custom-label-blue {
+        background-color: #ef5e0a; /* Azul */
+    }
+
+      
+    </style>
+  {% endblock stylesheets %}
+
+{% block content %}
+    <div class="row">
+        <!-- Small Cards at the top -->
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">content_copy</i>
+                    </div>
+                    <p class="card-category">Used Space</p>
+                    <h3 class="card-title">49/50
+                        <small>GB</small>
+                    </h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons text-danger">warning</i>
+                        <a href="#pablo">Get More Space...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">store</i>
+                    </div>
+                    <p class="card-category">Revenue</p>
+                    <h3 class="card-title">$34,245</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">date_range</i> Last 24 Hours
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">info_outline</i>
+                    </div>
+                    <p class="card-category">Fixed Issues</p>
+                    <h3 class="card-title">75</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">local_offer</i> Tracked from Github
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                    <div class="card-icon">
+                        <i class="fa fa-twitter"></i>
+                    </div>
+                    <p class="card-category">Followers</p>
+                    <h3 class="card-title">+245</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">update</i> Just Updated
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Left side cards -->
+        <div class="col-md-3">
+            <div class="card card-chart">
+                <div class="card-header card-header-success">
+                    <div class="ct-chart" id="dailySalesChart1"></div>
+                </div>
+                <div class="card-body">
+                    
+                    
+                    <div class="custom-label-green">
+                        <span class="label-title">FRECUENCUA DE CONGESTION</span>
+                        <span class="label-value">570</span>
+                        <span class="label-percentage"><i class="fa fa-arrow-up"></i> 3.43%</span>
+                    </div>
+                    <div class="custom-label-green">
+                        <span class="label-title">DURACION DE ATASCO</span>
+                        <span class="label-value">32</span>
+                        <span class="label-percentage"><i class="fa fa-arrow-up"></i> 2.8%</span>
+                    </div>                    <!-- <h4 class="card-title">Daily Sales</h4>
+                    <p class="card-category">
+                        <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.
+                    </p> -->
+                    <!-- Etiqueta verde con estilo personalizado -->
+                    
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">access_time</i> updated 4 minutes ago
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            <div class="card card-chart">
+                <div class="card-header card-header-warning">
+                    <div class="ct-chart" id="emailSubscriptionsBarChart"></div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Email Subscriptions</h4>
+                    <p class="card-category">Last Campaign Performance</p>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">access_time</i> campaign sent 2 days ago
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Central Black Card -->
+        <div class="col-md-6">
+            <div class="card card-chart">
+                <div class="card-header card-header-dark">
+                    <div class="ct-chart" id="blackCardChart"></div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Central Information</h4>
+                    <p class="card-category">Key Data</p>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">access_time</i> updated just now
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right side cards -->
+        <div class="col-md-3">
+            <div class="card card-chart">
+                <div class="card-header card-header-success">
+                    <div class="ct-chart" id="dailySalesChart2"></div>
+                </div>
+                <div class="card-body">
+                    <div class="custom-label-blue">
+                        <span class="label-title">N° DE ACCIDENTES REPORTADOS</span>
+                        <span class="label-value">25</span>
+                        <span class="label-percentage"><i class="fa fa-arrow-down"></i> 7.22%</span>
+                    </div>
+                    <!-- Etiqueta azul con estilo personalizado -->
+                    <div class="custom-label-blue">
+                        <span class="label-title">N° INCIDENTES REPORTADOS</span>
+                        <span class="label-value">26</span>
+                        <span class="label-percentage"><i class="fa fa-arrow-down"></i> 4.18%</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">access_time</i> updated 4 minutes ago
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="card card-chart">
+                <div class="card-header card-header-warning">
+                    <div class="ct-chart" id="emailSubscriptionsChart"></div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Email Subscriptions</h4>
+                    <p class="card-category">Last Campaign Performance</p>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">access_time</i> campaign sent 2 days ago
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Completed Tasks Cards -->
+        <div class="col-md-3">
+            <div class="card card-chart">
+                <div class="card-header card-header-danger">
+                    <div id="completedTasksChart1" style="height: 200px;"></div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">NIVEL CONGESTIÓN PROMEDIO</h4>
+                    <p class="card-category">Escala, datos adicionales</p>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">access_time</i> campaign sent 2 days ago
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-chart">
+                <div class="card-header card-header-danger">
+                    <div id="completedTasksChart2" style="height: 200px;"></div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">VELOCIDAD MEDIA DEL TRAFICO</h4>
+                    <p class="card-category">Escala, datos adicionales</p>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">access_time</i> campaign sent 2 days ago
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-chart">
+                <div class="card-header card-header-danger">
+                    <div class="ct-chart" id="emailSubscriptionsBarChart2"></div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Completed Tasks</h4>
+                    <p class="card-category">Last Campaign Performance</p>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">access_time</i> campaign sent 2 days ago
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-chart">
+                <div class="card-header card-header-danger">
+                    <!-- <div id="completedTasksChart4" style="height: 200px;"></div> -->
+                    <div class="ct-chart" id="emailSubscriptionsChart2"></div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Completed Tasks</h4>
+                    <p class="card-category">Last Campaign Performance</p>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">access_time</i> campaign sent 2 days ago
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  {% endblock content %}
+  
+  {% block javascripts %}
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Javascript method's body can be found in assets/js/demos.js
+            md.initDashboardPageCharts();
+
+            // Gauge Chart Configurations
+            var gaugeConfig1 = {
+                type: 'gauge',
+                globals: {
+                    fontSize: 12
+                },
+                // plotarea: {
+                //     marginTop: 40
+                // },
+                plotarea: {
+                margin: 'dynamic'
+                },
+                plot: {
+                    size: '100%',
+                    valueBox: {
+                        placement: 'center',
+                        text: '%v', // default
+                        fontSize: 12,
+                        rules: [{
+                            rule: '%v >= 70',
+                            text: '%v<br>EXCELLENT'
+                        }, {
+                            rule: '%v < 70 && %v > 45',
+                            text: '%v<br>Good'
+                        }, {
+                            rule: '%v < 45 && %v > 25',
+                            text: '%v<br>Fair'
+                        }, {
+                            rule: '%v < 25',
+                            text: '%v<br>Bad'
+                        }]
+                    }
+                },
+                tooltip: {
+                    borderRadius: 5
+                },
+                scaleR: {
+                    aperture: 180,
+                    minValue: 0,
+                    maxValue: 100,
+                    step: 10,
+                    center: {
+                        visible: false
+                    },
+                    tick: {
+                        visible: false
+                    },
+                    item: {
+                        offsetR: 0,
+                        rules: [{
+                            rule: '%i == 9',
+                            offsetX: 15
+                        }]
+                    },
+                    labels: ['0', '10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
+                    ring: {
+                        size: 50,
+                        rules: [{
+                            rule: '%v >= 70',
+                            backgroundColor: '#66CC66'
+                        }, {
+                            rule: '%v < 70 && %v >= 45',
+                            backgroundColor: '#FFCC66'
+                        }, {
+                            rule: '%v < 45 && %v >= 25',
+                            backgroundColor: '#FF9966'
+                        }, {
+                            rule: '%v < 25',
+                            backgroundColor: '#FF6666'
+                        }]
+                    }
+                },
+                series: [{
+                    values: [50], // static value for testing
+                    backgroundColor: 'black',
+                    indicator: [10, 0, 0, 0, 0.3]
+                }]
+            };
+
+            zingchart.render({
+                id: 'completedTasksChart1',
+                data: gaugeConfig1,
+                height: '200px',
+                width: '100%'
+            });
+            
+
+            //SE crea segundo gauge
+            var gaugeConfig2 = JSON.parse(JSON.stringify(gaugeConfig1));
+            gaugeConfig2.series[0].values = [75]; // different static value
+
+            zingchart.render({
+                id: 'completedTasksChart2',
+                data: gaugeConfig2,
+                height: '200px',
+                width: '100%'
+            });
+
+            var gaugeConfig3 = JSON.parse(JSON.stringify(gaugeConfig1));
+            gaugeConfig3.series[0].values = [30]; // different static value
+
+            zingchart.render({
+                id: 'completedTasksChart3',
+                data: gaugeConfig3,
+                height: '200px',
+                width: '100%'
+            });
+
+            var gaugeConfig4 = JSON.parse(JSON.stringify(gaugeConfig1));
+            gaugeConfig4.series[0].values = [90]; // different static value
+
+            zingchart.render({
+                id: 'completedTasksChart4',
+                data: gaugeConfig4,
+                height: '200px',
+                width: '100%'
+            });
+
+            // Pie Chart Configuration for Email Subscriptions (right side)
+            var pieConfig = {
+      "type": "pie",
+      "title": {
+        "text": "DISTRIBUCION DE ACCIDENTES REPORTADOS",
+        "margin-right": "30%",
+        "margin-top": "8%",
+        "font-size": 16
+      },
+      "legend": {
+        "x": "68%",
+        "y": "25%",
+        "border-width": 1,
+        "border-color": "gray",
+        "border-radius": "5px",
+        "header": {
+          "text": "Legend",
+          "font-family": "Georgia",
+          "font-size": 12,
+          "font-color": "#3333cc",
+          "font-weight": "normal",
+        },
+        "marker": {
+          "type": "circle"
+        },
+        "toggle-action": "remove",
+        "minimize": true,
+        "icon": {
+          "line-color": "#9999ff"
+        },
+        "max-items": 8,
+        "overflow": "scroll"
+      },
+    //   "plotarea": {
+    //     "margin-right": "30%",
+    //     "margin-top": "10%"
+    //   },
+      plotarea: {
+                margin: 'dynamic'
+            },
+
+      "plot": {
+        "value-box": {
+          "text": "%v",
+          "font-size": 12,
+          "font-family": "Georgia",
+          "font-weight": "normal",
+          "placement": "out",
+          "font-color": "gray",
+        },
+		"animation": {
+                        effect: 2,
+                        method: 5,
+                        speed: 500,
+                        sequence: 1
+         },
+        "tooltip": {
+          "text": "%t: %v (%npv%)",
+          "font-color": "black",
+          "font-family": "Georgia",
+          "text-alpha": 1,
+          "background-color": "white",
+          "alpha": 0.7,
+          "border-width": 1,
+          "border-color": "#cccccc",
+          "line-style": "dotted",
+          "border-radius": "40px",
+          "padding": "10%",
+          "placement": "node:center"
+        },
+        "border-width": 1,
+        "border-color": "#cccccc",
+        "line-style": "dotted"
+      },
+                series: [{
+                    values: [35],
+                    text: "AUTO DETENIDO"
+                }, {
+                    values: [25],
+                    text: "LLUVIA INTENSA"
+                }, {
+                    values: [20],
+                    text: "OBJETO EN VIA"
+                }, {
+                    values: [15],
+                    text: "NIEBLA"
+                }, {
+                    values: [5],
+                    text: "VACHE"
+                }]
+            };
+
+
+
+
+            var pieConfig2 = {
+      "type": "pie",
+      "title": {
+        "text": "GRAVEDAD DE ACCIDENTES REPORTADOS"
+      },
+      "legend": {
+        "x": "75%",
+        "y": "25%",
+        "border-width": 1,
+        "border-color": "gray",
+        "border-radius": "5px",
+        "header": {
+          "text": "Legend",
+          "font-family": "Georgia",
+          "font-size": 12,
+          "font-color": "#3333cc",
+          "font-weight": "normal"
+        },
+        "marker": {
+          "type": "circle"
+        },
+        "toggle-action": "remove",
+        "minimize": true,
+        "icon": {
+          "line-color": "#9999ff"
+        },
+        "max-items": 8,
+        "overflow": "scroll"
+      },
+      "plotarea": {
+                "margin": 'dynamic'
+            },
+      "plot": {
+        "value-box": {
+          "text": "%v",
+          "font-size": 12,
+          "font-family": "Georgia",
+          "font-weight": "normal",
+          "placement": "out",
+          "font-color": "gray",
+        },
+		"animation": {
+                        effect: 2,
+                        method: 5,
+                        speed: 300,
+                        sequence: 1
+         },
+        "tooltip": {
+          "text": "%t: %v (%npv%)",
+          "font-color": "black",
+          "font-family": "Georgia",
+          "text-alpha": 1,
+          "background-color": "white",
+          "alpha": 0.7,
+          "border-width": 1,
+          "border-color": "#cccccc",
+          "line-style": "dotted",
+          "border-radius": "10px",
+          "padding": "10%",
+          "placement": "node:center"
+        },
+        "border-width": 1,
+        "border-color": "#cccccc",
+        "line-style": "dotted"
+      },
+                series: [{
+                    values: [40],
+                    text: "LEVE"
+                }, {
+                    values: [20],
+                    text: "MEDIO"
+                }, {
+                    values: [35],
+                    text: "GRAVE"
+                }, {
+                    values: [5],
+                    text: "SG"
+                }]
+            };
+
+            zingchart.render({
+                id: 'emailSubscriptionsChart',
+                data: pieConfig,
+                height: '400px',
+                width: '100%'
+            });
+            zingchart.render({
+                id: 'emailSubscriptionsChart2',
+                data: pieConfig2,
+                height: '400px',
+                width: '100%'
+            });
+
+            // Bar Chart Configuration for Email Subscriptions (left side)
+            var barConfig = {
+            type: 'bar',
+            title: {
+                text: 'TOP CALLES CON CONGESTIÓN',
+                fontSize: 16,
+                fontColor: '#333',
+                align: 'center'
+            },
+            plotarea: {
+                margin: 'dynamic'
+            },
+            plot: {
+                animation: {
+                    effect: 9,
+                    method: 'ANIMATION_BACK_EASE_OUT',
+                    speed: 800,
+                    sequence: 0,
+                    delay: 300
+                }
+            },
+            scaleX: {
+                labels: ['Av. Cristóbal Colón', 'Av. Ignacio Collao', 'Av. Pascual Binimelis','Ruta 160','Serrano']
+            },
+            series: [
+                {
+                    values: [95624, 12079, 11361, 10456, 7246]
+                }
+            ]
+            };
+
+            var barConfig2 = {
+            type: 'bar',
+            title: {
+                text: 'TIPOS ACCIDENTES VS TIPOS DE CAMINOS',
+                fontSize: 16,
+                fontColor: '#333',
+                align: 'center'
+            },
+            plot: {
+                animation: {
+                    effect: 8,
+                    method: 'ANIMATION_BACK_EASE_OUT',
+                    speed: 800,
+                    sequence: 0,
+                    delay: 300
+                }
+            },
+            scaleX: {
+                labels: ['Calle Principal', 'Autopistas', 'Calles', 'Primaria']
+            },
+            plotarea: {
+                margin: 'dynamic'
+            },
+            series: [
+                {
+                    values: [483492, 169368, 119157, 103878]
+                }
+            ]
+            };
+
+
+
+            zingchart.render({
+                id: 'emailSubscriptionsBarChart',
+                data: barConfig,
+                height: '400px',
+                width: '100%'
+            });
+            zingchart.render({
+                id: 'emailSubscriptionsBarChart2',
+                data: barConfig2,
+                height: '400px',
+                width: '100%'
+            });
+
+            // Labels for Daily Sales (left)
+            //$("#dailySalesChart1").parent().append('<div class="alert alert-success"><strong>Green Label: </strong> This is a green label with some important information.</div>');
+
+            // Labels for Daily Sales (right)
+            //$("#dailySalesChart2").parent().append('<div class="alert alert-info"><strong>Blue Label: </strong> This is a blue label with some important information.</div>');
+
+        });
+    </script>
+{% endblock javascripts %}
